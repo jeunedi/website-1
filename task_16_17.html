@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>Игра: Проверка диапазона</title>
+    <script>
+        // Переменная для хранения результата проверки
+        let isInRange = false;
+
+        function checkRange() {
+            // Получаем значения из полей
+            const a = parseInt(document.getElementById('a').value);
+            const b = parseInt(document.getElementById('b').value);
+            const c = parseInt(document.getElementById('c').value);
+
+            // Проверяем, принадлежит ли значение C диапазону [A, B]
+            if (c >= a && c <= b) {
+                document.getElementById('result').textContent = "Принадлежит диапазону";
+                isInRange = true; // Устанавливаем флаг, что C в диапазоне
+            } else {
+                document.getElementById('result').textContent = "Не принадлежит диапазону";
+                isInRange = false; // Сбрасываем флаг
+            }
+        }
+
+        function sendToServer() {
+            // Проверяем, находится ли C в диапазоне
+            if (isInRange) {
+                const searchText = document.getElementById('search').value;
+                const googleSearchUrl = `https://www.google.com/search?q=${encodeURIComponent(searchText)}`;
+                window.location.href = googleSearchUrl; // Перенаправляем на Google с поисковым запросом
+            } else {
+                alert("Значение C не принадлежит диапазону A-B. Сначала проверьте условие.");
+            }
+        }
+    </script>
+</head>
+<body>
+
+<h1>Принадлежит ли целое C диапазону A-B?</h1>
+
+<!-- Поле для поиска -->
+<p>Для поисковика: <input type="text" id="search" placeholder="search"></p>
+
+<!-- Формулировка задачи -->
+<p><b>Формулировка задачи:</b></p>
+<textarea readonly rows="3" cols="50">
+Принадлежит ли целое C диапазону A-B? Если принадлежит - отправить все на сервер
+</textarea>
+
+<!-- Поля для ввода A, B и C -->
+<p>a: <input type="number" id="a" value="10"></p>
+<p>b: <input type="number" id="b" value="20"></p>
+<p>c: <input type="number" id="c" value="19"></p>
+
+<!-- Результат -->
+<p>Результат решения задачи: <span id="result">не определен</span></p>
+
+<!-- Кнопка для проверки -->
+<button onclick="checkRange()">Проверить</button>
+
+<!-- Отдельная кнопка для отправки на сервер -->
+<button onclick="sendToServer()">Отправить</button>
+
+</body>
+</html>

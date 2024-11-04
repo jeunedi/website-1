@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Таблица с изображениями и гиперссылками</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+        table {
+            width: 80%;
+            margin: 50px auto;
+            border-collapse: collapse;
+            background-image: url('images/img_4.jpg'); /* Задний фон таблицы */
+            background-size: cover;
+        }
+        th, td {
+            border: 2px solid #333;
+            padding: 0; /* Убираем внутренний отступ */
+            text-align: center;
+            height: 200px; /* Фиксированная высота ячейки */
+            background-color: rgba(255, 255, 255, 0.8); /* Полупрозрачный фон для текста */
+            position: relative;
+        }
+        .image-cell img {
+            width: 100%; /* Изображение растягивается на всю ширину */
+            height: 100%; /* Изображение растягивается на всю высоту */
+            object-fit: cover; /* Обрезает изображение по границам, сохраняя пропорции */
+            display: block; /* Убираем отступы */
+        }
+        .link img {
+            width: 100px; /* Устанавливаем размер изображения-гиперссылки */
+            height: auto;
+        }
+        .tooltip {
+            display: none; /* Скрываем подсказку по умолчанию */
+            position: absolute;
+            background-color: rgba(0, 0, 0, 0.75);
+            color: white;
+            padding: 5px 10px;
+            border-radius: 4px;
+            font-size: 14px;
+            white-space: nowrap;
+            pointer-events: none; /* Отключаем взаимодействие курсора с подсказкой */
+        }
+    </style>
+</head>
+<body>
+
+<table>
+    <tr>
+        <th>Заголовок 1</th>
+        <th>Заголовок 2</th>
+        <th>Заголовок 3</th>
+    </tr>
+    <tr>
+        <td>Текст 1</td>
+        <td class="image-cell">
+            <img src="images/img_5.jpg" alt="Изображение в ячейке">
+            <!-- Всплывающее сообщение -->
+            <div class="tooltip">This is a tooltip message</div>
+        </td>
+        <td class="link">
+            <!-- Изображение-гиперссылка -->
+            <a href="https://example.com">
+                <img src="images/img_6.jpg" alt="Изображение-гиперссылка">
+            </a>
+        </td>
+    </tr>
+    <tr>
+        <td>Текст 2</td>
+        <td>Текст 3</td>
+        <td>Текст 4</td>
+    </tr>
+</table>
+
+<script>
+    // Получаем ячейку с изображением и всплывающим сообщением
+    const imageCell = document.querySelector('.image-cell');
+    const tooltip = imageCell.querySelector('.tooltip');
+
+    // Обработчик для отображения подсказки при наведении
+    imageCell.addEventListener('mousemove', (e) => {
+        tooltip.style.display = 'block';
+        tooltip.style.left = `${e.offsetX + 10}px`;
+        tooltip.style.top = `${e.offsetY + 10}px`;
+    });
+
+    // Скрытие подсказки при выходе курсора из ячейки
+    imageCell.addEventListener('mouseleave', () => {
+        tooltip.style.display = 'none';
+    });
+</script>
+
+</body>
+</html>

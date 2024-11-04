@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Паспорт Гражданина РФ</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f7f7f7;
+            margin: 0;
+            padding: 0;
+        }
+
+        .passport {
+            width: 700px;
+            height: auto;
+            margin: 50px auto;
+            display: flex;
+            justify-content: space-between;
+            border: 2px solid #000;
+            background-color: #fff;
+            padding: 20px;
+            box-sizing: border-box;
+        }
+
+        .passport-page {
+            width: 48%;
+            height: 100%;
+            border: 1px solid #ccc;
+            padding: 20px;
+            box-sizing: border-box;
+            position: relative;
+        }
+
+        .header {
+            text-align: center;
+            font-weight: bold;
+            margin-bottom: 20px;
+        }
+
+        .content {
+            margin-bottom: 15px;
+            font-size: 14px;
+        }
+
+        .content label {
+            font-weight: bold;
+            font-size: 16px;
+        }
+
+        .signature {
+            position: absolute;
+            bottom: 30px;
+            right: 10px;
+            font-style: italic;
+            border-top: 1px solid #000;
+            text-align: center;
+            width: 150px;
+        }
+
+        .content span {
+            display: inline-block;
+            width: 60%;
+        }
+
+        .btn {
+            display: block;
+            margin: 20px auto;
+            padding: 10px 20px;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            cursor: pointer;
+            font-size: 16px;
+            border-radius: 5px;
+        }
+
+        .btn:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+
+<div class="passport">
+    <!-- Page 2 (Left) -->
+    <div class="passport-page">
+        <div class="header">
+            <h2>Российская Федерация</h2>
+            <h3>Паспорт</h3>
+            <p>Гражданина Российской Федерации</p>
+        </div>
+
+        <div class="content">
+            <label>Фамилия:</label>
+            <span id="last-name">Хакимова</span>
+        </div>
+        <div class="content">
+            <label>Имя:</label>
+            <span id="first-name">Динара</span>
+        </div>
+        <div class="content">
+            <label>Отчество:</label>
+            <span id="patronymic">Ринатовна</span>
+        </div>
+        <div class="content">
+            <label>Дата рождения:</label>
+            <span id="dateBirth">10.12.2002</span>
+        </div>
+        <div class="content">
+            <label>Место рождения:</label>
+            <span>г. Казань</span>
+        </div>
+
+    </div>
+
+    <!-- Page 3 (Right) -->
+    <div class="passport-page">
+        <div class="photo">
+            <!-- This is where the passport photo would be -->
+        </div>
+        <div class="content">
+            <label>Пол:</label>
+            <span>Женский</span>
+        </div>
+        <div class="content">
+            <label>Дата выдачи:</label>
+            <span>15.02.2023</span>
+        </div>
+        <div class="content">
+            <label>Код подразделения:</label>
+            <span>770-001</span>
+        </div>
+        <div class="content">
+            <label>Место выдачи:</label>
+            <span>УФМС России по г. Казани</span>
+        </div>
+
+        <div class="signature">
+            Подпись владельца
+        </div>
+    </div>
+</div>
+
+<!-- Button to toggle between Cyrillic and Latin -->
+<button class="btn" onclick="toggleName()">Toggle Cyrillic/Latin</button>
+
+<script>
+    let isCyrillic = true;
+
+    function toggleName() {
+        // Get the name elements by their IDs
+        const lastName = document.getElementById('last-name');
+        const firstName = document.getElementById('first-name');
+        const patronymic = document.getElementById('patronymic');
+        const dateBirth = document.getElementById('dateBirth');
+
+        // Check if it's Cyrillic or Latin, and toggle accordingly
+        if (isCyrillic) {
+            // Change to Latin
+            lastName.textContent = 'Khakimova';
+            firstName.textContent = 'Dinara';
+            patronymic.textContent = 'Rinatovna';
+            dateBirth.textContent = '10.12.2003';
+        } else {
+            // Change back to Cyrillic
+            lastName.textContent = 'Хакимова';
+            firstName.textContent = 'Динара';
+            patronymic.textContent = 'Ринатовна';
+            dateBirth.textContent = '10.12.2002';
+        }
+
+        // Toggle the state
+        isCyrillic = !isCyrillic;
+    }
+</script>
+
+</body>
+</html>
