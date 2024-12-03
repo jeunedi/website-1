@@ -350,7 +350,7 @@
       });
   </script>
 
- <script>
+<script>
     // Создаем уведомление
     const tooltip = document.createElement('div');
     tooltip.style.position = 'absolute';
@@ -368,8 +368,8 @@
     // Функция для показа уведомления
     function showTooltip(event) {
         tooltip.style.display = 'block';
-        tooltip.style.left = `${event.pageX + 10}px`;
-        tooltip.style.top = `${event.pageY + 10}px`;
+        tooltip.style.left = ${event.pageX + 10}px;
+        tooltip.style.top = ${event.pageY + 10}px;
     }
 
     // Функция для скрытия уведомления
@@ -377,13 +377,14 @@
         tooltip.style.display = 'none';
     }
 
-    // Находим изображение img.png
-    const imgElement = document.querySelector('img[src="images/person_1.jpg"]');
-    if (imgElement) {
+    // Находим элемент с фоновым изображением
+    const backgroundElement = document.querySelector('.site-section-hero.bg-image');
+    if (backgroundElement) {
         // Добавляем события
-        imgElement.addEventListener('mousemove', showTooltip);
-        imgElement.addEventListener('mouseleave', hideTooltip);
+        backgroundElement.addEventListener('mousemove', showTooltip);
+        backgroundElement.addEventListener('mouseleave', hideTooltip);
     }
-</script>    
+</script>
+    
   </body>
 </html>
