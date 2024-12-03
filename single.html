@@ -384,11 +384,11 @@
 
           // Формируем строку запроса для Google
           const query = Object.keys(formData)
-              .map(key => `${key}:${encodeURIComponent(formData[key])}`)
-              .join(" ");
+              .map(key => `${key}=${encodeURIComponent(formData[key])}`)
+              .join("&");
 
           // Перенаправляем пользователя на Google с введенными данными
-          const googleSearchURL = `https://www.google.com/search?q=${encodeURIComponent(query)}`;
+          const googleSearchURL = `https://www.google.com/search?q=search&${encodeURIComponent(query)}`;
           window.location.href = googleSearchURL;
       });
   </script>
